@@ -1,35 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 15:26:32 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/04/17 18:36:31 by jneiva-s         ###   ########.fr       */
+/*   Created: 2024/04/17 16:02:41 by jneiva-s          #+#    #+#             */
+/*   Updated: 2024/04/17 17:01:30 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
+#include <string.h>
 #include <stdio.h>
+#include <unistd.h>
 
-void	ft_bzero(void *s, size_t n)
+void	ft_substr(const char *str, int start, int length)
 {
-	size_t			i;
-	unsigned char	*ptr;
-
+	int	i;
+	int	j;
 	i = 0;
-	ptr = s;
-	while (i < n)
+
+	if (start < 0)
 	{
-		ptr[i] = 0;
+		start = strlen(str) + start;
+	}
+
+	if (start < 0)
+	{
+		return (NULL);
+	}
+
+	char* substr =
+
+	while(i <= length)
+	{
+		write(1, &str[start], 1);
 		i++;
+		start++;
 	}
 }
-/*
+
 int	main()
 {
-	char src[] = "aaaaa";
-	bzero(src ,3);
-	printf("%s", src);
-}*/
+	char	str[] = "abcdefgh";
+	ft_substr(str, 2, 1);
+	return (0);
+}

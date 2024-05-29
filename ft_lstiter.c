@@ -1,46 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 14:59:12 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/03/14 17:38:25 by jneiva-s         ###   ########.fr       */
+/*   Created: 2024/05/14 17:22:32 by jneiva-s          #+#    #+#             */
+/*   Updated: 2024/05/14 17:22:34 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int nb, int fd)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (nb == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
+	if (!lst || !f)
 		return ;
-	}
-	if (nb < 0)
+	while (lst)
 	{
-		write(fd, "-", 1);
-		nb *= -1;
+		f(lst->content);
+		lst = lst->next;
 	}
-	if (nb >= 10)
-	{
-		ft_putnbr_fd(nb / 10, fd);
-	}
-	nb = (nb % 10) + 48;
-	write(fd, &nb, 1);
 }
 /*
-int main()
-{
-	ft_putnbr_fd(-10, 1);
-	write(1, "\n", 1);
-	ft_putnbr_fd(142, 1);
-	write(1, "\n", 1);
-	ft_putnbr_fd(0, 1);
-	write(1, "\n", 1);
-	ft_putnbr_fd(-2147483648, 1);
-	write(1, "\n", 1);
-	return (0);
+void print_content(void *content) {
+    printf("%s\n", (char *)content);
+}
+
+int main() {
+    t_list node1, node2, node3;
+    t_list *list = &node1;
+    node1.content = "node 1";
+    node2.content = "node 2";
+    node1.next = &node2;
+    node2.next = NULL;
+
+    ft_lstiter(list, &print_content);
+    return 0;
 }*/

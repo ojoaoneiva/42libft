@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 17:41:36 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/03/05 17:41:41 by jneiva-s         ###   ########.fr       */
+/*   Created: 2024/04/30 11:55:46 by jneiva-s          #+#    #+#             */
+/*   Updated: 2024/04/30 12:21:35 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_toupper(char c)
+#include <stdio.h>
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	if (c >= 97 && c <= 122)
-		c -= 32;
-	return (c);
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }
 /*
+void test(unsigned int index, char *c)
+{
+    printf("%u", index);
+    printf("%c \n", *c);
+}
+
 int main()
 {
-	char k[] = "dfhf";
-	ft_toupper(k);
-	printf("%s", k);
-}*/
+    char str[] = "Hello";
+    ft_striteri(str, &test);
+    return 0;
+}
+*/

@@ -24,8 +24,7 @@ void	ft_putstr_fd(char *str, int fd)
 	}
 }
 /*
-int	main()
-{
+int	main() {
 	char x[] = "abcd";
 	ft_putstr_fd(x);
 }*/

@@ -1,59 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 17:01:36 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/04/17 18:20:42 by jneiva-s         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:37:27 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-int	function2(char *str, char *to_find, int seq, int len);
-
-char	*ft_strnstr(char *str, char *to_find, int len)
+char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
-	int	i;
-	int	seq;
-	int	x;
+	size_t			i;
+	size_t			j;
+	unsigned int	to_find_len;
 
 	i = 0;
-	seq = 0;
-	x = function2(str, to_find, seq, len);
-	if (x == -1 || x >= len)
+	if (!str || !to_find)
 		return (NULL);
-	return (&str[x]);
-}
-
-int	function2(char *str, char *to_find, int seq, int len)
-{
-	int	start;
-	int	i;
-
-	start = -1;
-	i = 0;
-	if (*to_find == '\0')
-		return (0);
-	while (str[i] != '\0' && i < len)
+	if (to_find[0] == '\0')
+		return ((char *)str);
+	to_find_len = ft_strlen(to_find);
+	while (str[i] && i < len)
 	{
-		if (str[i] == to_find[seq])
-		{
-			if (seq == 0)
-				start = i;
-			if (to_find[seq + 1] == '\0')
-				return (start);
-			seq++;
-		}
-		else
-			seq = 0;
+		j = 0;
+		while (str[i + j] == to_find[j] && (i + j) < len && to_find[j])
+			j++;
+		if (j == to_find_len)
+			return ((char *)&str[i]);
 		i++;
 	}
-	return (-1);
+	return (NULL);
 }
 /*
 int	main()

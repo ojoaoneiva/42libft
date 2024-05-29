@@ -10,39 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <unistd.h>
 //#include <stdio.h>
 
-int	ft_isprint(char *str)
+int	ft_isprint(char c)
 {
-	int	i;
-	int	x;
-
-	i = 0;
-	x = 1;
-	if (str[0] != '\0')
-	{
-		while (str[i] != '\0')
-		{
-			if ((str[i] >= 32 && str[i] <= 126))
-			{
-				i++;
-			}
-			else
-			{
-				x = 0;
-				i++;
-				break ;
-			}
-		}
-	}
-	return (x);
+	return (c >= 32 && c <= 126);
 }
 /*
-int main()
-{
-	char k[] = "dfhf";
-	int j;
-	j = ft_isprint(k);
-	printf("%d", j);
+int main() {
+	char k = 'a';
+	printf("%d", ft_isprint(k));
 }*/

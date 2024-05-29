@@ -10,33 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <unistd.h>
+//#include <stdio.h>
 
-int	ft_isalpha(char *str)
+int	ft_isalpha(char c)
 {
-	int	i;
-	int	x;
-
-	i = 0;
-	x = 1;
-	while (str[i] != '\0')
-	{
-		if ((str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122))
-		{
-			i++;
-		}
-		else
-		{
-			x = 0;
-			i++;
-			break ;
-		}
-	}
-	return (x);
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
 /*
-int main()
-{
-	char k[] = "dfghS";
-	ft_isalpha(k);
+int main() {
+	char k = 'a';
+	printf("%d", ft_isalpha(k));
 }*/

@@ -6,31 +6,31 @@
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:57:00 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/04/17 19:10:36 by jneiva-s         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:15:46 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 void	*ft_memchr(const void *str, int c, size_t n)
 {
-	int	i;
-	size_t	j;
-	const unsigned char *s = str;
-	i = 0;
+	size_t				j;
+	const unsigned char	*s;
+
+	s = str;
 	j = 0;
-	while(str[i] != '\0' && j < n)
+	while (j < n)
 	{
-		if(str[i] == c)
-			return (str[i]);
-		i++;
+		if ((unsigned char)s[j] == (unsigned char)c)
+			return ((void *)s + j);
 		j++;
 	}
 	return (0);
 }
-
-int	main()
-{
+/*
+int	main() {
 	char	str[] = "abcdefghi";
 	char	c = 'c';
-	size_t	n = 8;
-	ft_memchr(str, c, n);
-}
+	size_t	n = 7;
+	printf("%s", (char *)ft_memchr(str, c, n));
+} */

@@ -10,22 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-
-char	*ft_tolower(char *str)
+char	ft_tolower(char c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if ((str[i] >= 65 && str[i] <= 90))
-		{
-			str[i] += 32;
-		}
-		i++;
-	}
-	return (str);
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return (c);
 }
 /*
 int main()

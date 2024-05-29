@@ -6,43 +6,55 @@
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:02:41 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/04/17 17:01:30 by jneiva-s         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:01:25 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_substr(const char *str, int start, int length)
+static int	ft_special_cases(const char *str, unsigned int *start, size_t *len)
 {
-	int	i;
-	int	j;
+	if (!str)
+		return (2);
+	if (*start + *len > (unsigned int)ft_strlen(str))
+		*len = ft_strlen(str) - *start;
+	if (*start > (unsigned int)ft_strlen(str))
+		return (0);
+	return (1);
+}
+
+char	*ft_substr(const char *str, unsigned int start, size_t len)
+{
+	unsigned int		i;
+	char				*dest;
+
 	i = 0;
-
-	if (start < 0)
-	{
-		start = strlen(str) + start;
-	}
-
-	if (start < 0)
-	{
+	if (ft_special_cases(str, &start, &len) == 2)
 		return (NULL);
-	}
-
-	char* substr =
-
-	while(i <= length)
+	if (!ft_special_cases(str, &start, &len))
 	{
-		write(1, &str[start], 1);
+		dest = (char *)malloc(1);
+		if (!dest)
+			return (NULL);
+		dest[0] = '\0';
+		return (dest);
+	}
+	dest = (char *)malloc(len + 1);
+	if (!dest)
+		return (NULL);
+	while (i < len && str[start])
+	{
+		dest[i] = str[start];
 		i++;
 		start++;
 	}
+	dest[i] = '\0';
+	return (dest);
 }
-
+/*
 int	main()
 {
-	char	str[] = "abcdefgh";
-	ft_substr(str, 2, 1);
+	char str[] = "abcdefgh";
+	printf("%s", ft_substr(str, 5, 20));
 	return (0);
-}
+}*/

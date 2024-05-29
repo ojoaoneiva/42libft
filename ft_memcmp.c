@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 17:41:36 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/03/05 17:41:41 by jneiva-s         ###   ########.fr       */
+/*   Created: 2024/04/19 15:14:40 by jneiva-s          #+#    #+#             */
+/*   Updated: 2024/04/19 15:27:08 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_toupper(char c)
+#include <stdio.h>
+
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	if (c >= 97 && c <= 122)
-		c -= 32;
-	return (c);
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n)
+	{
+		if (((unsigned char *)str1)[i] != ((unsigned char *)str2)[i])
+			return (((unsigned char *)str1)[i] - 
+					((unsigned char *)str2)[i]);
+		i++;
+	}
+	return (0);
 }
 /*
-int main()
+int	main()
 {
-	char k[] = "dfhf";
-	ft_toupper(k);
-	printf("%s", k);
+	char	s1[] = "abfd";
+	char	s2[] = "abcd";
+	size_t	n = 3;
+	printf("%d", ft_memcmp(s1, s2, n));
 }*/

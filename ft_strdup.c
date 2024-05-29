@@ -10,12 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strcpy(char *dest, char *src)
+static char	*ft_strcpy(char *dest, const char *src)
 {
 	int	i;
 
@@ -29,26 +26,17 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*dest;
 	int		i;
 
 	i = 0;
-	if (src[0] == '\0')
-	{
-		return (NULL);
-	}
 	while (src[i] != '\0')
-	{
 		i++;
-	}
-	printf("%d", i);
 	dest = (char *)malloc(i + 1);
 	if (!dest)
-	{
 		return (NULL);
-	}
 	ft_strcpy(dest, src);
 	return (dest);
 }
@@ -60,4 +48,4 @@ int	main(void)
 	printf("%s", copia);
 	free(copia);
 	return (0);
-}*/
+}*/ 

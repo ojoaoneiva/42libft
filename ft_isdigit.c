@@ -10,34 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <unistd.h>
 //#include <stdio.h>
 
-int	ft_isdigit(char *str)
+int	ft_isdigit(char c)
 {
-	int	i;
-	int	x;
-
-	i = 0;
-	x = 1;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= 48 && str[i] <= 57)
-		{
-			i++;
-		}
-		else
-		{
-			x = 0;
-			i++;
-			break ;
-		}
-	}
-	return (x);
+	return (c >= '0' && c <= '9');
 }
 /*
-int main()
-{
-	char k[] = "09t76";
-	ft_isdigit(k);
+int main() {
+	char k = '7';
+	printf("%d", ft_isdigit(k));
 }*/

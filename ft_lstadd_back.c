@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 15:56:52 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/04/10 16:51:01 by jneiva-s         ###   ########.fr       */
+/*   Created: 2024/05/14 17:23:02 by jneiva-s          #+#    #+#             */
+/*   Updated: 2024/05/14 17:25:17 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(char *str, int c)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
-	int	start;
+	t_list	*last;
 
-	i = 0;
-	start = -1;
-	while (str[i] != '\0')
-	{
-		if (str[i] == (char)c)
-			start = i;
-		i++;
-	}
-	if (str[i] == (char)c)
-		start = i;
-	if (start != -1)
-		return (&str[start]);
+	if (*lst == NULL)
+		*lst = new;
 	else
-		return (NULL);
+	{
+		last = *lst;
+		while (last->next != NULL)
+			last = last->next;
+		last->next = new;
+	}
 }
 /*
-int	main()
-{
-	char *y;
-	char c = 'c';
-	char x[] = "abcdefgch";
-	y = ft_strrchr(x,c);
-	printf("%s", y);
+int main() {
+    t_list node1, node2, node3;
+    t_list *list = &node1;
+    node1.next = &node2;
+    node2.next = NULL;
+    ft_lstadd_back(&list, &node3);
+    printf("last content of the list: %s\n", (char *)node3.content);
+    return 0;
 }*/

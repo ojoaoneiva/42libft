@@ -25,10 +25,7 @@ void	ft_putendl_fd(char *str, int fd)
 	write(fd, "\n", 1);
 }
 /*
-int	main()
-{
+int	main() {
 	char x[] = "abcd";
-	ft_putendl_fd(x, 0);
 	ft_putendl_fd(x, 1);
-	ft_putendl_fd(x, 2);
-}*/
+} */

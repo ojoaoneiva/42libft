@@ -10,21 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-//#include <stdio.h>
+#include "libft.h"
 
-int	ft_strlcpy(char *dest, char *src)
+int	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (src[i] != '\0')
+	while (src[i] && i + 1 < size)
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
+	if (i < size)
+		dest[i] = '\0';
+	while (src[i])
+		i++;
 	return (i);
 }
 /*
@@ -33,10 +34,11 @@ int main()
 	int o;
 	char old[] = "abcde";
 	char new[] = "";
+	size_t k = 5;
 
 	printf("%s \n", old);
 
-	o = ft_strlcpy(new, old);
+	o = ft_strlcpy(new, old, k);
 	printf("%s", new);
 	printf("%d", o);
 }*/

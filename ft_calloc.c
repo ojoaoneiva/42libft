@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 17:41:36 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/03/05 17:41:41 by jneiva-s         ###   ########.fr       */
+/*   Created: 2024/04/22 15:18:44 by jneiva-s          #+#    #+#             */
+/*   Updated: 2024/05/15 15:10:40 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_toupper(char c)
+#include "libft.h"
+
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (c >= 97 && c <= 122)
-		c -= 32;
-	return (c);
+	void	*dest;
+	size_t	i;
+
+	if (size && count > SIZE_MAX / size)
+		return (NULL);
+	i = 0;
+	dest = (void *)malloc(count * size);
+	if (!dest)
+		return (NULL);
+	while (i < count * size)
+	{
+		((unsigned char *)dest)[i] = 0;
+		i++;
+	}
+	return (dest);
 }
 /*
-int main()
+int	main()
 {
-	char k[] = "dfhf";
-	ft_toupper(k);
-	printf("%s", k);
+	size_t count = 3;
+	size_t size = 1;
+	printf("%p", ft_calloc(count,size));
+	free(ptr);
+	return 0;
 }*/

@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 17:41:36 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/03/05 17:41:41 by jneiva-s         ###   ########.fr       */
+/*   Created: 2024/05/15 15:07:58 by jneiva-s          #+#    #+#             */
+/*   Updated: 2024/05/15 15:09:15 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_toupper(char c)
+#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
 {
-	if (c >= 97 && c <= 122)
-		c -= 32;
-	return (c);
+	int	size;
+
+	size = 0;
+	while (lst != NULL)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
 }
 /*
-int main()
-{
-	char k[] = "dfhf";
-	ft_toupper(k);
-	printf("%s", k);
+int main() {
+    t_list node1, node2, node3;
+    t_list *list = &node1;
+    node1.next = &node2;
+    node2.next = &node3;
+    node3.next = NULL;
+    int x = ft_lstsize(list)
+    printf("%d", x);
+    return 0;
 }*/

@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jneiva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 17:41:36 by jneiva-s          #+#    #+#             */
-/*   Updated: 2024/03/05 17:41:41 by jneiva-s         ###   ########.fr       */
+/*   Created: 2024/03/05 16:44:04 by jneiva-s          #+#    #+#             */
+/*   Updated: 2024/03/05 16:44:14 by jneiva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_toupper(char c)
+//#include <stdio.h>
+
+int	ft_isascii(unsigned char c)
 {
-	if (c >= 97 && c <= 122)
-		c -= 32;
-	return (c);
+	return (c <= 127);
 }
 /*
-int main()
-{
-	char k[] = "dfhf";
-	ft_toupper(k);
-	printf("%s", k);
+int main() {
+	char k = 'a';
+	printf("%d", ft_isascii(k));
 }*/

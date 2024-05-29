@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
-#include <stdio.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -30,6 +29,8 @@ void	ft_bzero(void *s, size_t n)
 int	main()
 {
 	char src[] = "aaaaa";
-	bzero(src ,3);
+	printf("%s\n", src);
+	ft_bzero(src ,3);
 	printf("%s", src);
+	printf("%s\n", src + 3);
 }*/

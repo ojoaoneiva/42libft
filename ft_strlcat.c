@@ -10,29 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdio.h>
-#include <string.h>
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+int	ft_strlcat(char *dest, const char *src, unsigned int size)
 {
 	unsigned int	i;
 	unsigned int	j;
 
 	i = 0;
 	j = 0;
-	while (dest[i] != '\0')
-	{
+	while (dest[i] != '\0' && i < size)
 		i++;
-	}
-	while (src[j] != '\0' && i < size - 1)
+	while (src[j] != '\0' && i + j + 1 < size)
 	{
-		dest[i] = src[j];
-		i++;
+		dest[i + j] = src[j];
 		j++;
 	}
-	dest[i] = '\0';
-	return (i + j);
+	if (i < size)
+		dest[i + j] = '\0';
+	while (src[j] != '\0')
+		j++;
+	if (i < size)
+		return (i + j);
+	else
+		return (size + j);
 }
 /*
 int	main()
